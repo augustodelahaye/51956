@@ -1,0 +1,4 @@
+pila ejemplo {
+  crear([1, 2, 3]!  
+  sacar()!
+}
