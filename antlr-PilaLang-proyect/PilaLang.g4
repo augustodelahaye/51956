@@ -1,0 +1,38 @@
+grammar PilaLang;
+
+// ==== TOKENS PARA PALABRAS CLAVE (definir ANTES de ID) ====
+PILA:    'pila';
+CREAR:   'crear';
+EMPUJAR: 'empujar';
+SACAR:   'sacar';
+MIRAR:   'mirar';
+
+// ==== SÍMBOLOS ====
+LLAVE_IZQ: '{';
+LLAVE_DER: '}';
+PAR_IZQ:   '(';
+PAR_DER:   ')';
+CORCH_IZQ: '[';
+CORCH_DER: ']';
+COMA:      ',';
+EXCLAM:    '!';
+
+// ==== RESTO DE TOKENS ====
+NUMERO: [0-9]+;
+TEXTO:  '"' (~["\\] | '\\' .)* '"';
+ID:     [a-zA-Z][a-zA-Z0-9]*;
+WS:     [ \t\r\n]+ -> skip;
+
+// ==== REGLAS ====
+programa: PILA nombre LLAVE_IZQ comandos LLAVE_DER;
+comandos: (operacion)*;
+operacion: push | pop | peek | crear;
+
+crear: CREAR PAR_IZQ lista PAR_DER EXCLAM;
+push: EMPUJAR PAR_IZQ valor PAR_DER EXCLAM;
+pop: SACAR PAR_IZQ PAR_DER EXCLAM;
+peek: MIRAR PAR_IZQ PAR_DER EXCLAM;
+
+valor: NUMERO | TEXTO;
+lista: CORCH_IZQ (valor (COMA valor)*) CORCH_DER;
+nombre: ID;

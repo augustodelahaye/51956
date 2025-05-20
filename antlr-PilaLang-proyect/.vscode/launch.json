@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ANTLR4: Visualizar Árbol",
+      "type": "antlr-debug",
+      "request": "launch",
+      "input": "${workspaceFolder}/input.txt",
+      "grammar": "${workspaceFolder}/PilaLang.g4",
+      "startRule": "programa",      // <-- REGLA INICIAL DE TU GRAMÁTICA
+      "printParseTree": true,
+      "visualParseTree": true
+    }
+  ]
+}
