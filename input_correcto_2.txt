@@ -1,0 +1,5 @@
+pila correcta {
+  crear(["a", 2])!
+  mirar()!
+  empujar(100)!
+}
