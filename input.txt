@@ -1,6 +1,0 @@
- pila miPila {
-  crear([1, 2, "hola"])!
-  empujar(42)!
-  mirar()!
-  sacar()!
-}
